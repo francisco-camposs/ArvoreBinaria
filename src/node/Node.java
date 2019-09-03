@@ -35,4 +35,40 @@ public class Node {
     public void setRight(Node right) {
         this.right = right;
     }
+
+    public void accessPreOrder(NodeVisitor visitor){
+        visitor.visit(this);
+
+        if (null != left) {
+            this.left.accessPreOrder(visitor);
+        }
+
+        if (right != null) {
+            this.right.accessPreOrder(visitor);
+        }
+    }
+
+    public void accessInOrder(NodeVisitor visitor){
+        if (left != null) {
+            this.left.accessPreOrder(visitor);
+        }
+
+        visitor.visit(this);
+
+        if (right != null) {
+            this.right.accessPreOrder(visitor);
+        }
+    }
+
+    public void accessPostOrder(NodeVisitor visitor){
+        if (left != null) {
+            this.left.accessPreOrder(visitor);
+        }
+        if (right != null) {
+            this.right.accessPreOrder(visitor);
+        }
+        visitor.visit(this);
+    }
+
+
 }
